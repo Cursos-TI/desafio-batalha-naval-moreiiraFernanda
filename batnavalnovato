@@ -1,0 +1,36 @@
+#include <stdio.h>
+
+int main() {
+    int tab[10][10] = {0};
+    char letras[] = "ABCDEFGHIJ";
+    int linH = 2, colH = 2, linV = 5, colV = 8, tam = 3;
+
+    // Navio Horizontal
+    if (colH + tam <= 10) {
+        int posicaoValida = 1;
+        for (int i = 0; i < tam; i++) if (tab[linH][colH + i]) posicaoValida = 0;
+        if (posicaoValida) for (int i = 0; i < tam; i++) tab[linH][colH + i] = 3;
+    }
+
+    // Navio Vertical 
+    if (linV + tam <= 10) {
+        int posicaoValida = 1;
+        for (int i = 0; i < tam; i++) if (tab[linV + i][colV]) posicaoValida = 0;
+        if (posicaoValida) for (int i = 0; i < tam; i++) tab[linV + i][colV] = 3;
+    }
+
+    // Mostrar colunas em letras com espaçamento
+    printf("    ");
+    for (int i = 0; i <= 10; i++) printf("%c  ", letras[i]); 
+    printf("\n");
+
+    // Mostrar linhas em números com espaçamento
+    for (int i = 0; i < 10; i++) {
+    
+       printf("%2d ", i+1);
+        for (int j = 0; j < 10; j++) printf("%2d ", tab[i][j]);
+        printf("\n");
+    }
+
+    return 0;
+}
